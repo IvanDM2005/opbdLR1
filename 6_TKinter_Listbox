@@ -1,0 +1,22 @@
+from tkinter import *
+
+def buy(first, second):
+ select = first.curselection()
+ for i in select:
+  second.insert(END, first.get(i))
+ select=list(select)
+ select.reverse()
+ for i in select:
+  first.delete(i)
+root = Tk()
+
+food =['apple', 'bananas', 'tomato', 'potato', 'carrot', 'pineapple', 'bread', 'butter', 'milk', 'meat']
+shop = Listbox(selectmode=EXTENDED)
+shop.pack(side=LEFT)
+for i in food:
+ shop.insert(END, i)
+goods = Listbox(selectmode=EXTENDED)
+goods.pack(side=RIGHT)
+Button(text='>>>', command=lambda i=shop, j=goods: buy(i, j)).pack()
+Button(text='<<<', command=lambda i=goods, j=shop: buy(i, j)).pack()
+root.mainloop()
