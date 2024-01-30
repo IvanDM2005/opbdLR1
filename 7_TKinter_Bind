@@ -1,0 +1,22 @@
+from tkinter import *
+root = Tk()
+
+def take_item(event):
+ s = e.get()
+ e.delete(0, END)
+ l.insert(END, s)
+
+def give_item(event):
+ tup = l.curselection()
+ if tup:
+     s = l.get(tup[0])
+     e.delete(0, END)
+     e.insert(0, s)
+e=Entry()
+e.pack
+e.bind('<Return>', take_item)
+l = Listbox()
+l.pack()
+l.bind('<Double-Button-1>', give_item)
+
+root.mainloop()
