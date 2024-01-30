@@ -1,0 +1,46 @@
+import tkinter as tk
+def create_shape():
+ top = tk.Toplevel()
+ lx1 = tk.Label(top, text="X1")
+ lx1.grid(row=0, column=0,)
+ ex1 = tk.Entry(top)
+ ex1.grid(row=0, column=1)
+ ly1 = tk.Label(top, text="Y1")
+ ly1.grid(row=0, column=2)
+ ey1 = tk.Entry(top)
+ ey1.grid(row=0, column=3)
+ lx2 = tk.Label(top, text="X2")
+ lx2.grid(row=1, column=0)
+ ex2 = tk.Entry(top)
+ ex2.grid(row=1, column=1)
+ ly2 = tk.Label(top, text="Y2")
+ ly2.grid(row=1, column=2)
+ ey2 = tk.Entry(top)
+ ey2.grid(row=1, column=3)
+ shape_var = tk.StringVar()
+ radiobutton1 = tk.Radiobutton(top, text="Прямоугольник", variable=shape_var, value="rectangle")
+ radiobutton1.grid(row=4, column=0)
+ radiobutton2 = tk.Radiobutton(top, text="Овал", variable=shape_var, value="oval")
+ radiobutton2.grid(row=4, column=1)
+
+ def draw_shape():
+  x1 = int(ex1.get())
+  y1 = int(ey1.get())
+  x2 = int(ex2.get())
+  y2 = int(ey2.get())
+  shape_type = shape_var.get()
+  if shape_type == "rectangle":
+   canvas.create_rectangle(x1, y1, x1 + x2, y1 + y2)
+  elif shape_type == "oval":
+   canvas.create_oval(x1, y1, x1 + x2, y1 + y2)
+  top.destroy()
+ draw_button = tk.Button(top, text="Нарисовать", command=draw_shape)
+ draw_button.grid(row=5, columnspan=2)
+
+
+root = tk.Tk()
+canvas = tk.Canvas(root, width=400, height=400)
+canvas.grid(row=0, column=0, columnspan=2)
+add_button = tk.Button(root, text="Добавить фигуру", command=create_shape)
+add_button.grid(row=1, columnspan=2)
+root.mainloop()
