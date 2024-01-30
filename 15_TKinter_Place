@@ -1,0 +1,12 @@
+from tkinter import *
+from random import random
+
+def move():
+ b.place(relx=random(), rely=random())
+root = Tk()
+root['bg']='black'
+root.geometry('300x300')
+img = PhotoImage(file='smile.jpeg')
+b=Button(image=img, command=move)
+b.place(relx=0.5, rely=0.5, anchor=CENTER)
+root.mainloop()
