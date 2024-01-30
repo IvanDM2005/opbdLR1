@@ -17,8 +17,6 @@ def motion(x_new, x_step, y_step, flag=1):
   if c.coords(ball)[0] + 20 > x_new:
    root.after(10, lambda: motion(x_new, x_step, y_step, -1))
   else:
-
-
    c.bind('', click)
    c.itemconfig(ball, fill='green')
 def click(event):
